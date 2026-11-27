@@ -183,7 +183,7 @@ export default function QuestionsPage() {
               startIcon={<ArchiveRoundedIcon />}
               onClick={() => setTab(1)}
             >
-              View archived questions
+              View archived questions23
             </Button>
           </Box>
         </Box>
