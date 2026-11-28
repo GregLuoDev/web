@@ -5,7 +5,12 @@ import Link from "next/link";
 import { Box, Button, Chip, Paper } from "@mui/material";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import { AgGridReact } from "ag-grid-react";
-import type { ColDef, ICellRendererParams } from "ag-grid-community";
+import {
+  AllCommunityModule,
+  ModuleRegistry,
+  type ColDef,
+  type ICellRendererParams,
+} from "ag-grid-community";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {
   deleteQuestionById,
@@ -13,6 +18,8 @@ import {
   setSelectedQuestion,
 } from "@/store/questionsSlice";
 import type { Question } from "@/types/question";
+
+ModuleRegistry.registerModules([AllCommunityModule]);
 
 export function QuestionGrid() {
   const dispatch = useAppDispatch();
@@ -100,7 +107,6 @@ export function QuestionGrid() {
     <Paper elevation={0} className="ag-grid-card">
       <div className="ag-theme-quartz question-grid">
         <AgGridReact<Question>
-          theme="legacy"
           rowData={items}
           columnDefs={columns}
           pagination
